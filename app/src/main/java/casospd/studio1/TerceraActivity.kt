@@ -20,8 +20,8 @@ class TerceraActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tercera)
-        //regresar 2
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        //regresar (Solo funciona matando el anterior entonces no usar)
+        //supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         //boton de la llamada
         Bllamada!!.setOnClickListener(object  : View.OnClickListener{
             override fun onClick(v: View?) {
@@ -70,11 +70,13 @@ class TerceraActivity : AppCompatActivity() {
         })
         // open web
         Bweb!!.setOnClickListener{
-            val url = TWebPage.text.toString()
+            val url = TWebPage!!.text.toString()
             val intentWeb = Intent()
             intentWeb.action = Intent.ACTION_VIEW
             intentWeb.data = Uri.parse("http://"+url)
+            startActivity(intentWeb)
         }
+        //open mail
         Bmail!!.setOnClickListener(){
             val email ="santipachon4@gmail.com"
             val intentMail =Intent(Intent.ACTION_SEND, Uri.parse(email))
@@ -86,7 +88,7 @@ class TerceraActivity : AppCompatActivity() {
         }
         //Llamada sin permisos
         Bllamada2!!.setOnClickListener(){
-            val intentCall = Intent(Intent.ACTION_DIAL, Uri.parse("te:3213167575"))
+            val intentCall = Intent(Intent.ACTION_DIAL, Uri.parse("tel:3213167575"))
             startActivity(intentCall)
         }
         //camara
@@ -94,7 +96,7 @@ class TerceraActivity : AppCompatActivity() {
             val intentcamara =Intent("android.media.action.IMAGE_CAPTURE")
             startActivity(intentcamara)
         }
-
+        //back
         BBack.setOnClickListener(){
             startActivity(this,segunda::class.java)
         }

@@ -14,8 +14,8 @@ class segunda : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_segunda)
 
-        //regresar 2
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        //regresar (Solo funciona matando el anterior entonces no usar)
+       // supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
         val textview = findViewById(R.id.ResultofMain) as TextView
         val bundle = intent.extras
