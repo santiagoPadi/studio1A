@@ -12,6 +12,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        //Forzar icono en el action Bar
+        supportActionBar!!.setDisplayShowHomeEnabled(true)
+        supportActionBar!!.setIcon(R.mipmap.ic_launcher)
+
         Toast.makeText(this,"hi i feel good",Toast.LENGTH_LONG).show()
         Bcalcular.setOnClickListener {
             val apuesta= dataText.text.toString().toInt()

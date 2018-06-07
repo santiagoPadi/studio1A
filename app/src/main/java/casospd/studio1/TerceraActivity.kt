@@ -1,5 +1,6 @@
 package casospd.studio1
 
+import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -8,6 +9,8 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
 import android.support.v4.app.ActivityCompat
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_tercera.*
@@ -17,6 +20,8 @@ class TerceraActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tercera)
+        //regresar 2
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         //boton de la llamada
         Bllamada!!.setOnClickListener(object  : View.OnClickListener{
             override fun onClick(v: View?) {
@@ -84,6 +89,15 @@ class TerceraActivity : AppCompatActivity() {
             val intentCall = Intent(Intent.ACTION_DIAL, Uri.parse("te:3213167575"))
             startActivity(intentCall)
         }
+        //camara
+        BCamera.setOnClickListener(){
+            val intentcamara =Intent("android.media.action.IMAGE_CAPTURE")
+            startActivity(intentcamara)
+        }
+
+        BBack.setOnClickListener(){
+            startActivity(this,segunda::class.java)
+        }
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
@@ -117,5 +131,28 @@ class TerceraActivity : AppCompatActivity() {
     fun CheckPermisson(permission: String):Boolean{
         val result = this.checkCallingOrSelfPermission(permission)
         return  result == PackageManager.PERMISSION_GRANTED
+    }
+    fun startActivity(activity: Activity, nextActivity: Class<*>){
+        val intent = Intent(activity, nextActivity)
+        activity.startActivity(intent)
+        activity.finish()
+
+    }
+
+    //rellenando la vista con la direccion R.menu>menu_uno es la direccion
+    override fun onCreateOptionsMenu(menu : Menu):Boolean{
+        menuInflater.inflate(R.menu.menu_uno, menu)
+        return true
+    }
+    //que hacer en cada parte del menu
+    override fun onOptionsItemSelected(item: MenuItem?):Boolean{
+        when(item!!.itemId){
+            //que hacer con contactos
+            R.id.menuContactos ->{
+                val intentContactos = Intent(Intent.ACTION_VIEW,Uri.parse("content://contacts/people"))
+                startActivity(intentContactos)
+            }
+        }
+        return  super.onOptionsItemSelected(item)
     }
 }

@@ -14,6 +14,9 @@ class segunda : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_segunda)
 
+        //regresar 2
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+
         val textview = findViewById(R.id.ResultofMain) as TextView
         val bundle = intent.extras
         if(bundle != null && bundle.getString("sap_men") != null){
@@ -23,6 +26,9 @@ class segunda : AppCompatActivity() {
         }
         BTerceraActividad.setOnClickListener{
             startActivity(this,TerceraActivity:: class.java)
+        }
+        BBack.setOnClickListener(){
+            startActivity(this, MainActivity:: class.java)
         }
     }
     fun startActivity(activity: Activity, nextActivity: Class<*>){
