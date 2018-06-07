@@ -1,9 +1,12 @@
 package casospd.studio1
 
+import android.app.Activity
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
 import android.widget.Toast
+import kotlinx.android.synthetic.main.activity_segunda.*
 
 class segunda : AppCompatActivity() {
 
@@ -18,5 +21,14 @@ class segunda : AppCompatActivity() {
         }else{
             Toast.makeText(this,"no mando el bundle",Toast.LENGTH_SHORT)
         }
+        BTerceraActividad.setOnClickListener{
+            startActivity(this,TerceraActivity:: class.java)
+        }
+    }
+    fun startActivity(activity: Activity, nextActivity: Class<*>){
+        val intent = Intent(activity, nextActivity)
+        activity.startActivity(intent)
+        activity.finish()
+
     }
 }

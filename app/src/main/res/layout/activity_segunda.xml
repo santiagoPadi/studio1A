@@ -16,4 +16,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/BTerceraActividad"
+        style="@android:style/Widget.Holo.Button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Siguiente"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="465dp" />
+
 </android.support.constraint.ConstraintLayout>
